@@ -135,6 +135,7 @@ public class Hero extends Char {
 	
 	public HeroClass heroClass = HeroClass.ROGUE;
 	public HeroSubClass subClass = HeroSubClass.NONE;
+	public HeroGender heroGender = HeroGender.MALE;//VRB
 	
 	private int attackSkill = 10;
 	private int defenseSkill = 5;
@@ -160,7 +161,7 @@ public class Hero extends Char {
 	public boolean weakened = false;
 	
 	public float awareness;
-	
+
 	public int lvl = 1;
 	public int exp = 0;
 	
@@ -169,9 +170,16 @@ public class Hero extends Char {
 	public Hero() {
 		super();
 		name = "you";
-		
+
 		HP = HT = 20;
-		STR = STARTING_STR;
+
+		if (heroGender == HeroGender.MALE)//VRB
+			STR = STARTING_STR + 1;
+		else {
+			lvl = lvl + 1;
+			STR = STARTING_STR;
+		}//VRB
+
 		awareness = 0.1f;
 		
 		belongings = new Belongings( this );
@@ -195,7 +203,8 @@ public class Hero extends Char {
 		
 		heroClass.storeInBundle( bundle );
 		subClass.storeInBundle( bundle );
-		
+		heroGender.storeInBundle( bundle );//VRB
+
 		bundle.put( ATTACK, attackSkill );
 		bundle.put( DEFENSE, defenseSkill );
 		
@@ -213,7 +222,8 @@ public class Hero extends Char {
 		
 		heroClass = HeroClass.restoreInBundle( bundle );
 		subClass = HeroSubClass.restoreInBundle( bundle );
-		
+		heroGender = heroGender.restoreInBundle( bundle );//VRB
+
 		attackSkill = bundle.getInt( ATTACK );
 		defenseSkill = bundle.getInt( DEFENSE );
 		
@@ -233,7 +243,11 @@ public class Hero extends Char {
 	public String className() {
 		return subClass == null || subClass == HeroSubClass.NONE ? heroClass.title() : subClass.title();
 	}
-	
+
+	public String genderName() {//VRB
+		return heroGender.gender();
+	}//VRB
+
 	public void live() {
 		Buff.affect( this, Regeneration.class );	
 		Buff.affect( this, Hunger.class );

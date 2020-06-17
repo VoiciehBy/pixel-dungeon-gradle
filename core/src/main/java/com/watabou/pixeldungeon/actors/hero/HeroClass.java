@@ -39,12 +39,16 @@ import com.watabou.utils.Bundle;
 public enum HeroClass {
 
 	WARRIOR( "warrior" ), MAGE( "mage" ), ROGUE( "rogue" ), HUNTRESS( "huntress" );
-	
+
 	private String title;
-	
+
+	//VRB modified
 	private HeroClass( String title ) {
+		if(title == "huntress")
+			title = "hunter";
 		this.title = title;
 	}
+	//VRB modified
 	
 	public static final String[] WAR_PERKS = {
 		"Warriors start with 11 points of Strength.",
@@ -82,7 +86,7 @@ public enum HeroClass {
 	public void initHero( Hero hero ) {
 		
 		hero.heroClass = this;
-		
+
 		initCommon( hero );
 		
 		switch (this) {
