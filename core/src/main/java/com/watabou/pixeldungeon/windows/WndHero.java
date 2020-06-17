@@ -30,6 +30,7 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.buffs.Buff;
 import com.watabou.pixeldungeon.actors.hero.Hero;
+import com.watabou.pixeldungeon.actors.hero.HeroGender;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.BuffIndicator;
@@ -40,7 +41,8 @@ public class WndHero extends WndTabbed {
 	
 	private static final String TXT_STATS	= "Stats";
 	private static final String TXT_BUFFS	= "Buffs";
-	
+
+	private static final String TXT_GENDER	= "Gender";
 	private static final String TXT_EXP		= "Experience";
 	private static final String TXT_STR		= "Strength";
 	private static final String TXT_HEALTH	= "Health";
@@ -91,8 +93,10 @@ public class WndHero extends WndTabbed {
 	}
 	
 	private class StatsTab extends Group {
-		
-		private static final String TXT_TITLE		= "Level %d %s";
+
+		//VRB modified
+		private static final String TXT_TITLE		= "Level %d %s %s";
+		//VRB modified
 		private static final String TXT_CATALOGUS	= "Catalogus";
 		private static final String TXT_JOURNAL		= "Journal";
 		
@@ -102,10 +106,12 @@ public class WndHero extends WndTabbed {
 		
 		public StatsTab() {
 			
-			Hero hero = Dungeon.hero; 
+			Hero hero = Dungeon.hero;
 
-			BitmapText title = PixelScene.createText( 
-				Utils.format( TXT_TITLE, hero.lvl, hero.className() ).toUpperCase( Locale.ENGLISH ), 9 );
+			BitmapText title = PixelScene.createText(
+					//VRB modified
+				Utils.format( TXT_TITLE, hero.lvl, hero.className(),hero.genderName()).toUpperCase( Locale.ENGLISH ), 9 );
+					//VRB modified
 			title.hardlight( TITLE_COLOR );
 			title.measure();
 			add( title );
@@ -133,7 +139,7 @@ public class WndHero extends WndTabbed {
 			add( btnJournal );
 			
 			pos = btnCatalogus.bottom() + GAP;
-			
+
 			statSlot( TXT_STR, hero.STR() );
 			statSlot( TXT_HEALTH, hero.HP + "/" + hero.HT );
 			statSlot( TXT_EXP, hero.exp + "/" + hero.maxExp() );
