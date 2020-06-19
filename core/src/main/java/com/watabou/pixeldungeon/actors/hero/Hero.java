@@ -135,7 +135,7 @@ public class Hero extends Char {
 	
 	public HeroClass heroClass = HeroClass.ROGUE;
 	public HeroSubClass subClass = HeroSubClass.NONE;
-	public HeroGender heroGender = HeroGender.MALE;//VRB
+	public HeroGender heroGender = HeroGender.NONE;//VRB
 	
 	private int attackSkill = 10;
 	private int defenseSkill = 5;
@@ -245,7 +245,7 @@ public class Hero extends Char {
 	}
 
 	public String genderName() {//VRB
-		return heroGender.gender();
+		return heroGender.title();
 	}//VRB
 
 	public void live() {

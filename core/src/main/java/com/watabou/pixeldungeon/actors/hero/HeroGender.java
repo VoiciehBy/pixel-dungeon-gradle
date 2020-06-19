@@ -3,16 +3,16 @@ package com.watabou.pixeldungeon.actors.hero;
 import com.watabou.utils.Bundle;
 
 public enum HeroGender {
-    MALE("male"),FEMALE("female");
+    MALE("male"),FEMALE("female"),NONE("genderless");
 
-    public String gender;
+    public String title;
 
-    private HeroGender(String gender) {
-        this.gender = gender;
+    private HeroGender(String title) {
+        this.title = title;
     }
 
-    public String gender() {
-        return gender;
+    public String title() {
+        return title;
     }
 
     private static final String GENDER	= "gender";
@@ -23,6 +23,6 @@ public enum HeroGender {
 
     public static HeroGender restoreInBundle( Bundle bundle ) {
         String value = bundle.getString( GENDER );
-        return value.length() > 0 ? valueOf( value ) : MALE;
+        return value.length() > 0 ? valueOf( value ) : NONE;
     }
 };
