@@ -176,7 +176,10 @@ public class Hero extends Char {
 		if (heroGender == HeroGender.MALE)//VRB
 			STR = STARTING_STR + 1;
 		else {
-			lvl = lvl + 1;
+			HT += 5;
+			HP += 5;			
+			attackSkill++;
+			defenseSkill++;
 			STR = STARTING_STR;
 		}//VRB
 
