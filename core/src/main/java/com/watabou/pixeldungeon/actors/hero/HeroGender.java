@@ -29,13 +29,10 @@ public enum HeroGender {
     public void setGenderBonus(Hero hero)
     {
         if (hero.heroGender == HeroGender.MALE)//VRB
-            hero.STR = hero.STARTING_STR + 1;
+            hero.STR = hero.STARTING_STR + 5;
         else if(hero.heroGender == HeroGender.FEMALE){
-            hero.lvl += 1;
             hero.HT += 5;
             hero.HP += 5;
-            hero.attackSkill += 1;
-            hero.defenseSkill += 1;
             hero.STR = hero.STARTING_STR;
         }//VRB
 
