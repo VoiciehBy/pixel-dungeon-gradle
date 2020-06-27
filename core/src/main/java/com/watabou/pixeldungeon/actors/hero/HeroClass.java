@@ -42,13 +42,9 @@ public enum HeroClass {
 
 	private String title;
 
-	//VRB modified
 	private HeroClass( String title ) {
-		if(title == "huntress")
-			title = "hunter";
 		this.title = title;
 	}
-	//VRB modified
 	
 	public static final String[] WAR_PERKS = {
 		"Warriors start with 11 points of Strength.",
@@ -115,6 +111,19 @@ public enum HeroClass {
 	}
 	
 	private static void initCommon( Hero hero ) {
+		int seed = hero.heroGender.randomValue();
+		switch(seed) {
+			case 0:
+				hero.heroGender = HeroGender.MALE;
+				break;
+			case 1:
+				hero.heroGender = HeroGender.FEMALE;
+				break;
+			default:
+				hero.heroGender = HeroGender.NONE;
+				break;
+		}
+		hero.heroGender.setGenderBonus(hero);
 		(hero.belongings.armor = new ClothArmor()).identify();
 		new Food().identify().collect();
 		new Keyring().collect();
@@ -169,7 +178,9 @@ public enum HeroClass {
 	}
 	
 	private static void initHuntress( Hero hero ) {
-		
+		if(hero.heroGender == HeroGender.MALE)
+			hero.heroClass.title = "hunter";
+
 		hero.HP = (hero.HT -= 5);
 		
 		(hero.belongings.weapon = new Dagger()).identify();

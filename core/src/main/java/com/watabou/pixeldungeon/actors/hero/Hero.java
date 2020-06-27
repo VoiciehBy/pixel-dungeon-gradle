@@ -137,8 +137,8 @@ public class Hero extends Char {
 	public HeroSubClass subClass = HeroSubClass.NONE;
 	public HeroGender heroGender = HeroGender.NONE;//VRB
 	
-	private int attackSkill = 10;
-	private int defenseSkill = 5;
+	public int attackSkill = 10;//VRB modified
+	public int defenseSkill = 5;//VRB modified
 	
 
 	public boolean ready = false;
@@ -172,16 +172,7 @@ public class Hero extends Char {
 		name = "you";
 
 		HP = HT = 20;
-
-		if (heroGender == HeroGender.MALE)//VRB
-			STR = STARTING_STR + 1;
-		else {
-			HT += 5;
-			HP += 5;			
-			attackSkill++;
-			defenseSkill++;
-			STR = STARTING_STR;
-		}//VRB
+		STR = STARTING_STR;
 
 		awareness = 0.1f;
 		
