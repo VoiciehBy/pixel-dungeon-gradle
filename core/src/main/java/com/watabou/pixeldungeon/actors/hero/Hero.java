@@ -137,8 +137,8 @@ public class Hero extends Char {
 	public HeroSubClass subClass = HeroSubClass.NONE;
 	public HeroGender heroGender = HeroGender.NONE;//VRB
 	
-	public int attackSkill = 10;//VRB modified
-	public int defenseSkill = 5;//VRB modified
+	private int attackSkill = 10;
+	private int defenseSkill = 5;
 	
 
 	public boolean ready = false;
