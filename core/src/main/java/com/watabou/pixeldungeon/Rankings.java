@@ -26,6 +26,7 @@ import java.util.Comparator;
 
 import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
+import com.watabou.pixeldungeon.actors.hero.HeroGender;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
@@ -54,6 +55,7 @@ public enum Rankings {
 		rec.info	= Dungeon.resultDescription;
 		rec.win		= win;
 		rec.heroClass	= Dungeon.hero.heroClass;
+		rec.heroGender	= Dungeon.hero.heroGender;
 		rec.armorTier	= Dungeon.hero.tier();
 		rec.score	= score( win );
 		
@@ -168,6 +170,7 @@ public enum Rankings {
 		public boolean win;
 		
 		public HeroClass heroClass;
+		public HeroGender heroGender;//VRB
 		public int armorTier;
 		
 		public int score;
@@ -182,6 +185,7 @@ public enum Rankings {
 			score	= bundle.getInt( SCORE );
 			
 			heroClass	= HeroClass.restoreInBundle( bundle );
+			heroGender	= HeroGender.restoreInBundle( bundle );//VRB
 			armorTier	= bundle.getInt( TIER );
 			
 			gameFile	= bundle.getString( GAME );
@@ -195,6 +199,7 @@ public enum Rankings {
 			bundle.put( SCORE, score );
 			
 			heroClass.storeInBundle( bundle );
+			heroGender.storeInBundle( bundle );//VRB
 			bundle.put( TIER, armorTier );
 			
 			bundle.put( GAME, gameFile );
