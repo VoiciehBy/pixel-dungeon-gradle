@@ -40,21 +40,26 @@ public class AboutScene extends PixelScene {
 		"Music: Cube_Code\n\n" + 
 		"This game is inspired by Brian Walker's Brogue. " +
 		"Try it on Windows, Mac OS or Linux - it's awesome! ;)\n\n" +
-		"Please visit official website for additional info:";
-	
+		"Please visit official website for additional info:\n\n";
+
+	private static final String TXT_MOD =//VRB
+				"Screw's Pixel Dungeon is based on original PD (v 1.9.1) code\n" +
+				"Please support the official game!\n" +
+				"Modded by VoiciehBy\n";//VRB
+
 	private static final String LNK = "pixeldungeon.watabou.ru";
 	
 	@Override
 	public void create() {
 		super.create();
-		
+
 		BitmapTextMultiline text = createMultiline( TXT, 8 );
 		text.maxWidth = Math.min( Camera.main.width, 120 );
 		text.measure();
 		add( text );
 		
 		text.x = align( (Camera.main.width - text.width()) / 2 );
-		text.y = align( (Camera.main.height - text.height()) / 2 );
+		text.y = align( (Camera.main.height - text.height()) / 4);//VRB modified
 		
 		BitmapTextMultiline link = createMultiline( LNK, 8 );
 		link.maxWidth = Math.min( Camera.main.width, 120 );
@@ -64,6 +69,14 @@ public class AboutScene extends PixelScene {
 		
 		link.x = text.x;
 		link.y = text.y + text.height();
+
+		BitmapTextMultiline text_m = createMultiline( TXT_MOD, 8 );//VRB
+		text_m.maxWidth = Math.min( Camera.main.width, 120 );//VRB
+		text_m.measure();//VRB
+		add( text_m );//VRB
+
+		text_m.x = align( (Camera.main.width - text_m.width()) / 2 );//VRB
+		text_m.y = link.y + link.height() * 2;//VRB
 		
 		TouchArea hotArea = new TouchArea( link ) {
 			@Override
