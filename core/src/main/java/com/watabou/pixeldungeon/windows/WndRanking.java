@@ -143,7 +143,7 @@ public class WndRanking extends WndTabbed {
 		
 		private static final int GAP	= 4;
 		
-		private static final String TXT_TITLE	= "Level %d %s";
+		private static final String TXT_TITLE	= "Level %d %s %s";//VRB modified
 		
 		private static final String TXT_CHALLENGES	= "Challenges";
 		
@@ -164,10 +164,11 @@ public class WndRanking extends WndTabbed {
 			super();
 			
 			String heroClass = Dungeon.hero.className();
-			
+			String heroGender = Dungeon.hero.genderName();//VRB
+
 			IconTitle title = new IconTitle();
 			title.icon( HeroSprite.avatar( Dungeon.hero.heroClass, Dungeon.hero.tier() ) );
-			title.label( Utils.format( TXT_TITLE, Dungeon.hero.lvl, heroClass ).toUpperCase( Locale.ENGLISH ) );
+			title.label( Utils.format( TXT_TITLE, Dungeon.hero.lvl, heroClass,heroGender).toUpperCase( Locale.ENGLISH ) );//VRB modified
 			title.setRect( 0, 0, WIDTH, 0 );
 			add( title );
 			
