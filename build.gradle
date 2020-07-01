@@ -4,18 +4,18 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:4.0.0'
     }
 }
 
 allprojects {
 
     ext {
-        appName = 'Pixel Dungeon'
+        appName = 'Screw\'s Pixel Dungeon'
         appPackageName = 'com.watabou.pixeldungeon'
 
         appVersionCode = 74
-        appVersionName = '1.9.1'
+        appVersionName = '1.9.1(core)'
 
         appAndroidCompileSDK = 29
         appAndroidMinSDK = 8
