@@ -35,6 +35,7 @@ import com.watabou.pixeldungeon.items.weapon.missiles.Dart;
 import com.watabou.pixeldungeon.items.weapon.missiles.Boomerang;
 import com.watabou.pixeldungeon.ui.QuickSlot;
 import com.watabou.utils.Bundle;
+import com.watabou.utils.Random;
 
 public enum HeroClass {
 
@@ -111,7 +112,7 @@ public enum HeroClass {
 	}
 	
 	private static void initCommon( Hero hero ) {
-		int seed = hero.heroGender.randomValue();
+		int seed = Random.Int(2);//VRB
 		switch(seed) {
 			case 0:
 				hero.heroGender = HeroGender.MALE;
@@ -123,6 +124,11 @@ public enum HeroClass {
 				hero.heroGender = HeroGender.NONE;
 				break;
 		}
+		HeroNameList heroNameList = new HeroNameList();
+		HeroName selectedName = heroNameList.getRandomName();
+		while(selectedName.getGender() != hero.heroGender && selectedName.getGender() != HeroGender.NONE)
+			selectedName = heroNameList.getRandomName();
+		hero.heroName = selectedName;
 		hero.heroGender.setGenderBonus(hero);
 		(hero.belongings.armor = new ClothArmor()).identify();
 		new Food().identify().collect();
