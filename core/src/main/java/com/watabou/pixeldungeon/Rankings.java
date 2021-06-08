@@ -169,6 +169,7 @@ public enum Rankings {
         private static final String WIN = "win";
         private static final String SCORE = "score";
         private static final String TIER = "tier";
+        private  static final String NAME = "name";
         private static final String GAME = "gameFile";
 
         public String info;
@@ -176,7 +177,7 @@ public enum Rankings {
 
         public HeroClass heroClass;
         public HeroGender heroGender;//VRB
-        public HeroName heroName;//VRB
+        public String heroName;//VRB
         public int armorTier;
 
         public int score;
@@ -192,7 +193,7 @@ public enum Rankings {
 
             heroClass = HeroClass.restoreInBundle(bundle);
             heroGender = HeroGender.restoreInBundle(bundle);//VRB
-            heroName = HeroName.restoreInBundle(bundle);//VRB
+            heroName = bundle.getString(NAME);//VRB
             armorTier = bundle.getInt(TIER);
 
             gameFile = bundle.getString(GAME);
@@ -207,6 +208,8 @@ public enum Rankings {
 
             heroClass.storeInBundle(bundle);
             heroGender.storeInBundle(bundle);//VRB
+            bundle.put(NAME,heroName);//VRB
+
             bundle.put(TIER, armorTier);
 
             bundle.put(GAME, gameFile);

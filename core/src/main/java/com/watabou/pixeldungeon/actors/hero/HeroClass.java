@@ -110,8 +110,9 @@ public enum HeroClass {
 		
 		hero.updateAwareness();
 	}
-	
-	private static void initCommon( Hero hero ) {
+
+
+	private static void initGender(Hero hero){
 		int seed = Random.Int(2);//VRB
 		switch(seed) {
 			case 0:
@@ -124,12 +125,20 @@ public enum HeroClass {
 				hero.heroGender = HeroGender.NONE;
 				break;
 		}
+		hero.heroGender.setGenderBonus(hero);
+	}
+
+	private static void initName(Hero hero){//VRB
 		HeroNameList heroNameList = new HeroNameList();
 		HeroName selectedName = heroNameList.getRandomName();
 		while(selectedName.getGender() != hero.heroGender && selectedName.getGender() != HeroGender.NONE)
 			selectedName = heroNameList.getRandomName();
-		hero.heroName = selectedName;
-		hero.heroGender.setGenderBonus(hero);
+		hero.heroName = selectedName.title();
+	}
+
+	private static void initCommon( Hero hero ) {
+		initGender(hero);
+		initName(hero);
 		(hero.belongings.armor = new ClothArmor()).identify();
 		new Food().identify().collect();
 		new Keyring().collect();

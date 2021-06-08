@@ -112,6 +112,7 @@ public class WndHero extends WndTabbed {
                     //VRB modified
                     Utils.format(TXT_TITLE, hero.lvl, hero.name(), hero.className(), hero.genderName().charAt(0)).toUpperCase(Locale.ENGLISH), 9);
             //VRB modified
+            System.out.println(hero.name());
             title.hardlight(TITLE_COLOR);
             title.measure();
             add(title);

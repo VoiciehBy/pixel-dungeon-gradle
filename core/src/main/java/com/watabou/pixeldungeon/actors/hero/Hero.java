@@ -131,10 +131,11 @@ public class Hero extends Char {
     private static final String STRENGTH = "STR";
     private static final String LEVEL = "lvl";
     private static final String EXPERIENCE = "exp";
+    private static final String NAME = "name";//VRB
     public HeroClass heroClass = HeroClass.ROGUE;
     public HeroSubClass subClass = HeroSubClass.NONE;
     public HeroGender heroGender = HeroGender.NONE;//VRB
-    public HeroName heroName;
+    public String heroName;
     public boolean ready = false;
     public HeroAction curAction = null;
     public HeroAction lastAction = null;
@@ -239,7 +240,7 @@ public class Hero extends Char {
         heroClass.storeInBundle(bundle);
         subClass.storeInBundle(bundle);
         heroGender.storeInBundle(bundle);//VRB
-        heroName.storeInBundle(bundle);
+        bundle.put(NAME,heroName);//VRB
 
         bundle.put(ATTACK, attackSkill);
         bundle.put(DEFENSE, defenseSkill);
@@ -259,7 +260,7 @@ public class Hero extends Char {
         heroClass = HeroClass.restoreInBundle(bundle);
         subClass = HeroSubClass.restoreInBundle(bundle);
         heroGender = HeroGender.restoreInBundle(bundle);//VRB
-        heroName = HeroName.restoreInBundle(bundle);//VRB
+        heroName = bundle.getString(NAME);//VRB
 
         attackSkill = bundle.getInt(ATTACK);
         defenseSkill = bundle.getInt(DEFENSE);
@@ -281,7 +282,7 @@ public class Hero extends Char {
         return heroGender.title();
     }//VRB
 
-    public String name() {return heroName.title; }//VRB
+    public String name() {return heroName; }//VRB
 
     public void live() {
         Buff.affect(this, Regeneration.class);
