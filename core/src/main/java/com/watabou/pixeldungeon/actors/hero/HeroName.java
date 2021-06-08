@@ -1,7 +1,5 @@
 package com.watabou.pixeldungeon.actors.hero;
 
-import com.watabou.utils.Bundle;
-
 public class HeroName {//VRB
     private static final String NAME = "name";
     public String title = "Max";
