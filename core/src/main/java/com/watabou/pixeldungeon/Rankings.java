@@ -19,8 +19,6 @@ package com.watabou.pixeldungeon;
 
 import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
-import com.watabou.pixeldungeon.actors.hero.HeroGender;
-import com.watabou.pixeldungeon.actors.hero.HeroName;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
@@ -32,6 +30,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import screwspixeldungeon.HeroGender;
 
 public enum Rankings {
 

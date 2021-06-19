@@ -109,6 +109,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
+import screwspixeldungeon.HeroGender;
+
 public class Hero extends Char {
 
     public static final String TXT_YOU_NOW_HAVE = "You now have %s";
